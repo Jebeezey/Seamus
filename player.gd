@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 100.0
+const SPEED = 5000.0
 const JUMP_VELOCITY = -400.0
 
 @onready var player = $"."
@@ -23,26 +23,30 @@ func _physics_process(delta: float) -> void:
 	var up := Input.is_action_pressed("up")
 	var down := Input.is_action_pressed("down")
 	
-	if left or right or up or down:
+	if left or right:
 		animator.play("walking_side_to_side")
+	elif up:
+		animator.play("walking_up")
+	elif down:
+		animator.play("walking_down")
 	else:
-		animator.stop()
+		animator.play("idle")
 	
 	if left:
-		velocity.x = -1.0 * SPEED
+		velocity.x = -1.0 * SPEED * delta
 		if animator.scale.x > 0.0:
 			animator.scale.x *= -1.0
 	elif right:
-		velocity.x = 1.0 * SPEED
+		velocity.x = 1.0 * SPEED * delta
 		if animator.scale.x < 0.0:
 			animator.scale.x *= -1.0
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	if up:
-		velocity.y = -1.0 * SPEED
+		velocity.y = -1.0 * SPEED * delta
 	elif down:
-		velocity.y = 1.0 * SPEED
+		velocity.y = 1.0 * SPEED * delta
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 

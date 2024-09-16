@@ -13,5 +13,12 @@ limit_smoothed = true
 [node name="TileMapLayer" parent="." instance=ExtResource("1_r6epq")]
 scale = Vector2(1.5, 1.5)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="TileMapLayer"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMapLayer/StaticBody2D"]
+position = Vector2(112, 8)
+scale = Vector2(9.6, 0.8)
+polygon = PackedVector2Array(10, -10, 10, -270, -31.6667, -270, -31.6667, -10, -13.3333, -10, -13.3333, 10, -33.3333, 10, -33.3333, -290, 11.6667, -290, 11.6667, 10, -10, 10, -10, -10)
+
 [node name="Player" parent="." instance=ExtResource("2_epxeb")]
-position = Vector2(2, 20)
+position = Vector2(-1, -56)
