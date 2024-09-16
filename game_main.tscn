@@ -6,9 +6,12 @@
 [node name="Game_main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(11, -153)
+zoom = Vector2(1.75, 1.75)
+limit_smoothed = true
 
 [node name="TileMapLayer" parent="." instance=ExtResource("1_r6epq")]
-position = Vector2(-1, 98)
+scale = Vector2(1.5, 1.5)
 
 [node name="Player" parent="." instance=ExtResource("2_epxeb")]
 position = Vector2(2, 20)
